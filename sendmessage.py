@@ -6,7 +6,7 @@ import calendarTest as CT
 import asyncio
 
 channelID = 796797478820380675
-BotToken = 'ODA3Mjk1NTY5MzAyNjUwODkw.YB16lg.teeKD1fP_1DdQBZdxrI6oXYxTE0'
+BotToken = 'ODA3Mjk1NTY5MzAyNjUwODkw.YB16lg.hDWnjkCE4-ITAI8NHicl6gclwIA'
 days=["Monday","Tuesday","Wednesday","Thursday","Friday"]
 users=[]
 prefix="$"
