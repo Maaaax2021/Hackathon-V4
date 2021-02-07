@@ -5,7 +5,7 @@ from time import gmtime as get_t, asctime as rep_t
 import calendarTest as CT
 import asyncio
 
-channelID = 796797478820380675
+channelID = 808015151465758770
 BotToken = 'ODA'+'3Mjk1NTY'+'5MzAyNjUwODkw'
 BotToken+='.YB16lg.JDqwpV'
 BotToken+='-4cAju0yIQmA-'+'cLyhSX70'
@@ -44,14 +44,14 @@ class TimeBot(commands.Bot):
           if member.name == User.strname: #check if discord User istance has same name as User object made here
             User.call = member.mention #make the call variable the string used to mention them
             break
-      c_sec,c_min,c_hour,c_wday=GetTime() 
+      c_sec,c_min,c_hour,c_wday=GetTime()
       while c_sec!=0: #if not directly on minute
-          await asyncio.sleep(0.5) 
+          await asyncio.sleep(0.5)
           c_sec,c_min,c_hour,c_wday=GetTime() #re-check
       while c_min != 27 and c_min != 57: #if not 3 minutes before a lecture
           await asyncio.sleep(60)
           c_sec,c_min,c_hour,c_wday=GetTime() #recheck
-      for user in users: 
+      for user in users:
         for day, daytable in user.timetable.items(): #iterate through users checking day by day
           if c_wday == days.index(day): #check days are correct
             for hour, lesson in daytable.items():
