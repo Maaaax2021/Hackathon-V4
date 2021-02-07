@@ -24,7 +24,7 @@ def embed_pagesCreate():
       colour = discord.Colour.red()
   )
   pages = [page1, page2, page3]
-  return pages
+  return pages #create positive, negative, and general embedded replies
 
 
 @bot.command()
@@ -34,30 +34,31 @@ async def timetable(message):
   if message.author == bot.user:
     return
   await message.author.create_dm()
-  await message.author.dm_channel.send(embed=pages[0])
+  await message.author.dm_channel.send(embed=pages[0]) #get new command called timetable and send DM
 
 
 @bot.event
-async def on_reaction_add(reaction, user):
+async def on_reaction_add(reaction, user): #whenever someboduy reacts
   pages = embed_pagesCreate()
 
   if reaction.emoji == '👍':
-    message = discord.utils.get(await user.dm_channel.history(limit=3).flatten(), author=user)
+    message = discord.utils.get(await user.dm_channel.history(limit=3).flatten(), author=user) #only if thumbs up
 
     try: ##If they don't send a message and just react to the messages sent
       msg_attachment=message.attachments
-      if len(msg_attachment) > 0:
+      if len(msg_attachment) > 0: #if attached
         for attachment in msg_attachment:
           if attachment.filename.endswith(".ics") and attachment.filename.find("_") == 7: #index of _ should be 7
             pages = embed_pagesCreate()
             await attachment.save(attachment.filename)
             SM.MakeUser(message.author.name+"#"+message.author.discriminator,attachment.filename) #make user and send valid page
 
-            await message.author.dm_channel.send(embed=pages[1]) #valid?
+            await message.author.dm_channel.send(embed=pages[1]) #valid
           else:
-            await message.author.dm_channel.send(embed=pages[2]) #invalid?
+            await message.author.dm_channel.send(embed=pages[2]) #invalid
 
     except AttributeError:
-      await user.dm_channel.send(embed=pages[2]) #invalid?
+      await user.dm_channel.send(embed=pages[2]) #invalid
 
 bot.run(SM.BotToken)
+#run bot using token
