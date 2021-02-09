@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import random
 from time import gmtime as get_t, asctime as rep_t
-import calendar as CT
+import calendarT as CT
 import asyncio
 
 channelID = 808015151465758770
